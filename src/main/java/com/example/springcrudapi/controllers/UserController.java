@@ -23,6 +23,13 @@ public class UserController {
     public List<User> getUser(){
         return userRepo.findAll();
     }
+    
+    //get one user by id.
+    @GetMapping(value = "/user/{id}")
+    public  User getOneUser(@PathVariable long id){
+        //get user by his id to update his data
+        return userRepo.findById(id).get();
+    }
     @RequestMapping(value = "/addUser", method = RequestMethod.POST, consumes = "application/json", produces="application/json")
     public ResponseEntity<User> addUser(@RequestBody User user){
         HttpHeaders headers = new HttpHeaders();
